@@ -1,4 +1,5 @@
 import UserModel from "../models/user.model";
+import logger from "../config/logger";
 
 /**
  * A method responsible for creating user
@@ -7,10 +8,11 @@ import UserModel from "../models/user.model";
  */
 export const CreateUser = async ({ firstName, lastName, email, userName }) => {
     try {
-        // @TODO: check for userName is required
         return await constructCreateUserEntity(firstName, lastName, email, userName);
 
     } catch (error) {
+        logger.error("CreateUser failed", error);
+
         if (error.name === "MongoServerError" && error.code === 11000 && error.keyPattern.userName === 1) {
             return {
                 status: false,
@@ -98,6 +100,8 @@ export const GetUsersPaginatedAndSearch = async (search, page, limit) => {
         return await constructFetchUsersEntity(query, limit, page, totalPages, count);
 
     } catch (error) {
+        logger.error("GetUsersPaginatedAndSearch failed", error);
+
         if (error.name === "MongoServerError" && error.code === 51024) {
             return {
                 status: false,
@@ -166,6 +170,8 @@ export const GetUser = async (id) => {
         };
 
     } catch (error) {
+        logger.error("GetUser failed", error);
+
         return {
             status: false,
             message: 'Error fetching user',
@@ -211,6 +217,8 @@ export const updateUser = async (id, firstName, lastName, email, userName) => {
         };
 
     } catch (error) {
+        logger.error("updateUser failed", error);
+
         return {
             status: false,
             message: 'Error updating user',
@@ -250,6 +258,8 @@ export const softDeleteUser = async (id) => {
         };
 
     } catch (error) {
+        logger.error("softDeleteUser failed", error);
+        
         return {
             status: false,
             message: 'Error deleteing user',

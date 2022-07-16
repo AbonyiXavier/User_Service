@@ -21,6 +21,7 @@ app.use("/api", router);
 
 app.get("/", (req, res) => {
   res.status(200).json({
+    status: true,
     message: "Welcome to user service",
   });
 });
