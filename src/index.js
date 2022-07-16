@@ -25,4 +25,11 @@ app.get("/", (req, res) => {
   });
 });
 
+app.all('*', (req, res) => {
+  res.status(404).json({
+    status: false,
+    message: 'resource not found',
+  });
+});
+
 export default app;

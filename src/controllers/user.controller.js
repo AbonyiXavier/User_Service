@@ -16,6 +16,7 @@ export const createUserHandler = catchAsync(async (req, res) => {
 })
 
 export const fetchUsersHandler = catchAsync(async (req, res) => {
+    
     const { search, page, limit } = req.query;
 
     const { status, message, data, meta } = await GetUsersPaginatedAndSearch(search, page, limit);
