@@ -6,7 +6,7 @@ import logger from "../config/logger";
  * @param {*} param0 
  * @returns 
  */
-export const CreateUser = async ({ firstName, lastName, email, userName }) => {
+export const createUser = async ({ firstName, lastName, email, userName }) => {
     try {
         return await constructCreateUserEntity(firstName, lastName, email, userName);
 
@@ -16,7 +16,7 @@ export const CreateUser = async ({ firstName, lastName, email, userName }) => {
         if (error.name === "MongoServerError" && error.code === 11000 && error.keyPattern.userName === 1) {
             return {
                 status: false,
-                message: "UserName already in use",
+                message: "User name already in use",
                 data: null
             };
         }
@@ -73,7 +73,7 @@ async function constructCreateUserEntity(firstName, lastName, email, userName) {
  * @param {*} limit 
  * @returns 
  */
-export const GetUsersPaginatedAndSearch = async (search, page, limit) => {
+export const getUsersPaginatedAndSearch = async (search, page, limit) => {
     try {
         page = !page || isNaN(page) ? 1 : Number(page);
 
@@ -151,7 +151,7 @@ async function constructFetchUsersEntity(query, limit, page, totalPages, count) 
  * @param {*} id 
  * @returns 
  */
-export const GetUser = async (id) => {
+export const getUser = async (id) => {
     try {
         const user = await UserModel.findOne({ _id: id, isDeleted: false });
 
