@@ -1,7 +1,9 @@
 import Joi from "joi"
-import pick from "../utils/pick"
+import { NextFunction, Request, Response } from 'express';
 
-const validate = (schema) => (req, res, next) => {
+import pick from "../common/utils/pick";
+
+const validate = (schema: any) => (req: Request, res: Response, next: NextFunction) => {
   const validSchema = pick(schema, ['params', 'query', 'body']);
   const object = pick(req, Object.keys(validSchema));
   const { value, error } = Joi.compile(validSchema)

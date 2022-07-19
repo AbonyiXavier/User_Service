@@ -1,6 +1,8 @@
-const dotenv = require('dotenv');
-const path = require('path');
-const Joi = require('joi');
+import dotenv from "dotenv";
+import path from 'path';
+import Joi from 'joi';
+
+dotenv.config();
 
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
@@ -19,7 +21,7 @@ if (error) {
 }
 
 export default {
-  env: envVars.NODE_ENV,
-  port: envVars.PORT,
+  NODE_ENV: envVars.NODE_ENV,
+  PORT: envVars.PORT,
   mongodb: envVars.MONGODB_URI
 }
