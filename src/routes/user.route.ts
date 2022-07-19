@@ -1,7 +1,7 @@
-import { createUserHandler, fetchUsersHandler, fetchUserHandler, updateUserHandler, softDeleteUserHandler } from '../controllers/user.controller';
+import { createUserHandler, fetchUserHandler, fetchUsersHandler, softDeleteUserHandler, updateUserHandler } from '../controllers/user.controller';
 import validate from '../middlewares/validate';
 
-import { createUserValidation, updateUserValidation } from '../validations/user.validation';
+import { createUserValidation, updateUserValidation } from './validations/user.validation';
 
 const router = require('express').Router();
 
