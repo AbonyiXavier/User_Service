@@ -28,11 +28,11 @@ You must have
 - (If the repository wasn't cloned)Extract the contents of the downloaded zip file into any suitable location on the computer
 - In the command prompt, cd to the root of the directory you extracted the app into
 - Run 'npm install' to install all dependencies
-- Run 'npm run start' to start the application
+- Run 'npm run start:dev' to start the application
 - In a browser address bar navigate to `http://localhost:${PORT}` with your preferred PORT on env
 
 ## Docker
- - To start the docker containers on your terminal run docker-compose up -d
+ - To start the docker containers on your terminal run `docker-compose up -d`
 ## Current Design Image
 
 ![current-design-pattern drawio (1)](https://user-images.githubusercontent.com/49367987/179438672-7e2cf801-98cd-4ec5-b456-c996191fcc45.png)
@@ -41,8 +41,9 @@ You must have
 
 - NodeJs
 - Express
+- Typescript
 - Mongodb(database)
-- Mongoose (ODM)
+- typegoose
 - Deployed on Heroku
 
 ## Author
