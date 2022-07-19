@@ -31,7 +31,8 @@ You must have
 - Run 'npm run start' to start the application
 - In a browser address bar navigate to `http://localhost:${PORT}` with your preferred PORT on env
 
-
+## Docker
+ - To start the docker containers on your terminal run docker-compose up -d
 ## Current Design Image
 
 ![current-design-pattern drawio (1)](https://user-images.githubusercontent.com/49367987/179438672-7e2cf801-98cd-4ec5-b456-c996191fcc45.png)
