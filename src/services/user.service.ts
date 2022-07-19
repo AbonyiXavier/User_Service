@@ -1,12 +1,7 @@
-import userModel from "../../models/user.model";
-import logger from "../../config/logger";
+import userModel from "../models/user.model";
+import logger from "../config/logger";
 import { createUserConfig, pageDtoConfig, updateUserConfig } from "./types";
 
-/**
- * This method is responsible for creating user
- * @param props
- * @returns
- */
 export const createUser = async (props: createUserConfig) => {
 
   const { firstName, lastName, email, userName } = props;

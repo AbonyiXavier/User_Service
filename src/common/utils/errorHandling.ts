@@ -1,4 +1,5 @@
-import { STATUS_CODES } from "./statusCodes";
+
+import { StatusCodes } from "http-status-codes";
 
 export default class AppError extends Error {
   status: string;
@@ -6,7 +7,7 @@ export default class AppError extends Error {
 
   constructor(
     public message: string,
-    public statusCode = STATUS_CODES.INTERNAL_SERVER_ERROR
+    public statusCode = StatusCodes.INTERNAL_SERVER_ERROR
   ) {
     super(message);
     this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
@@ -15,3 +16,5 @@ export default class AppError extends Error {
     Error.captureStackTrace(this, this.constructor);
   }
 }
+
+
