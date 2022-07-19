@@ -2,9 +2,9 @@ import express, { NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
+import { StatusCodes } from "http-status-codes";
 
-import { STATUS_CODES } from "./common/utils/statusCodes";
-import { statusError, statusSuccess } from "./common/constant/constant";
+import { statusError, statusSuccess } from "./common/constant";
 
 import router from "./routes/index";
 
@@ -23,14 +23,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api", router);
 
 app.get("/", (req: Request, res: Response) => {
-  res.status(STATUS_CODES.OK).json({
+  res.status(StatusCodes.OK).json({
     status: statusSuccess,
     message: "Welcome to user service 👈👈",
   });
 });
 
 app.all("*", (req: Request, res: Response) => {
-  res.status(STATUS_CODES.NOT_FOUND).json({
+  res.status(StatusCodes.NOT_FOUND).json({
     status: statusError,
     message: "resource not found",
   });
@@ -38,7 +38,7 @@ app.all("*", (req: Request, res: Response) => {
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   err.status = err.status || "error";
-  err.statusCode = err.statusCode || STATUS_CODES.INTERNAL_SERVER_ERROR;
+  err.statusCode = err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR;
 
   res.status(err.statusCode).json({
     status: err.status,
