@@ -104,8 +104,7 @@ export const updateUser = async (props: updateUserConfig) => {
         },
       },
       {
-        new: true,
-        upsert: true,
+        new: true
       }
     );
 
@@ -123,6 +122,7 @@ export const softDeleteUser = async (id: string) => {
       {
         _id: id,
         isDeleted: false,
+        deleteAt: null,
       },
       {
         $set: {
@@ -131,8 +131,7 @@ export const softDeleteUser = async (id: string) => {
         },
       },
       {
-        new: true,
-        upsert: true,
+        new: true
       }
     );
 
